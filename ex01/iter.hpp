@@ -6,7 +6,7 @@
 /*   By: pmedina- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 21:02:18 by pmedina-          #+#    #+#             */
-/*   Updated: 2021/12/09 21:41:23 by pmedina-         ###   ########.fr       */
+/*   Updated: 2021/12/12 17:36:34 by pmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void display(T t) {
 }
 
 template <typename T>
-void iter(T *arr, size_t len, void (fp)(T)) {
+void iter(T *arr, size_t len, void (*fp)(T)) {
 	for (size_t i = 0; i < len; i++) {
-		(*fp)(arr[i]);
+		(fp)(arr[i]);
 	}
 }
 

@@ -6,12 +6,12 @@
 #    By: pmedina- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 20:03:10 by pmedina-          #+#    #+#              #
-#    Updated: 2021/12/12 18:49:54 by pmedina-         ###   ########.fr        #
+#    Updated: 2021/12/12 18:15:35 by pmedina-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME 		=	iterate
+NAME 		=	array	
 SRCS 		=	main.cpp
 CXX 		=	clang++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address

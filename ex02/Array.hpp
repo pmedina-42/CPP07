@@ -19,35 +19,29 @@ template <class T>
 
 class Array {
 	private:
-		T array[];
+		size_t size;
+		T *value;
 	public:
 		// Constructors & Destructor
-		Array() { 
-			//*this = new Array;
-		}
-		Array(unsigned int n){
-			*this = new Array[n];
-			for (size_t i; i < n; i++)
-				*this[i] = new Array();
-			
-		}
+		Array() : value(new T()), size(0) { }
+		Array(unsigned int n) : value(new T[n]()), size(n) { }
 		Array(Array const&);
 		virtual ~Array() { }
 
 		Array& operator=(Array const &c) {
-			for (size_t i; this[i] != NULL; i++) {
+			for (size_t i; i < size; i++) {
 				*this[i] = c[i];
 			}
 			return *this;
 		}
 
 		Array& operator[](size_t i) const {
-			i > 10 ? throw OutOfBoundsException() : 0;
+			i > size ? throw OutOfBoundsException() : 0;
 			return this[i];	
 		}
 
 		// OOB Exception
-		class OutOfBoundsException {
+		class OutOfBoundsException : public std::exception {
 			public:
 				std::string getMessage() {
 					return "Index out of bounds";

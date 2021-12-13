@@ -6,7 +6,7 @@
 /*   By: pmedina- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 17:39:22 by pmedina-          #+#    #+#             */
-/*   Updated: 2021/12/13 21:08:14 by pmedina-         ###   ########.fr       */
+/*   Updated: 2021/12/13 22:22:26 by pmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,33 @@ class Array {
 	public:
 		// Constructors & Destructor
 		Array() : _size(0), value(new T[0]()) { }
-		Array(unsigned int n) : value(new T[n]()), _size(n) { }
-		Array(Array const&);
-		virtual ~Array() { }
+		Array(unsigned int n) : _size(n), value(new T[n]()) { }
+		Array(Array<T> const &c) : _size(c.size()) , value(new T[c.size()]) {
+			*this = c;
+		}
+		virtual ~Array() {
+			delete [] value;
+		}
 
-		size_t size() {
+		size_t size() const {
 			return _size;
 		}
 	
 		Array& operator=(Array const &c) {
-			(void)c;
+			if (&c != this) {
+				delete [] value;
+				_size = c.size();
+				value = new T[_size]();
+				for (size_t i = 0; i < _size; i++) {
+					value[i] = c[i];
+				}
+			}
+			return *this;
 		}
 
 		T& operator[](size_t i) const {
-			i > _size ? throw OutOfBoundsException() : 0;
-			return this[i];	
+			i > _size - 1 ? throw OutOfBoundsException() : 0;
+			return this->value[i];	
 		}
 
 		// OOB Exception

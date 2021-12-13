@@ -27,7 +27,7 @@ void display(T t) {
 }
 
 template <typename T>
-void iter(T *arr, size_t len, void (*fp)(T)) {
+void iter(T *arr, size_t len, void (*fp)(T const&)) {
 	for (size_t i = 0; i < len; i++) {
 		(fp)(arr[i]);
 	}

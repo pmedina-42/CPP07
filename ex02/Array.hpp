@@ -28,14 +28,15 @@ class Array {
 		Array(Array const&);
 		virtual ~Array() { }
 
+		size_t size() {
+			return size;
+		}
+	
 		Array& operator=(Array const &c) {
-			for (size_t i; i < size; i++) {
-				*this[i] = c[i];
-			}
-			return *this;
+			
 		}
 
-		Array& operator[](size_t i) const {
+		T& operator[](size_t i) const {
 			i > size ? throw OutOfBoundsException() : 0;
 			return this[i];	
 		}

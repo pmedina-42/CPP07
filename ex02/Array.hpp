@@ -6,7 +6,7 @@
 /*   By: pmedina- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 17:39:22 by pmedina-          #+#    #+#             */
-/*   Updated: 2021/12/13 22:22:26 by pmedina-         ###   ########.fr       */
+/*   Updated: 2021/12/14 20:02:41 by pmedina-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ class Array {
 			return *this;
 		}
 
-		T& operator[](size_t i) const {
-			i > _size - 1 ? throw OutOfBoundsException() : 0;
+		T& operator[](long i) const {
+			i > (long)_size - 1 ? throw OutOfBoundsException() : 0;
 			return this->value[i];	
 		}
 
 		// OOB Exception
 		class OutOfBoundsException : public std::exception {
 			public:
-				std::string getMessage() {
+				std::string getMessage() const throw() {
 					return "Index out of bounds";
 				}
 		};
